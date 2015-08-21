@@ -1,9 +1,14 @@
 package com.example.peter.memorygame;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.ArrayList;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -12,6 +17,20 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<Drawable> imageList = new ArrayList<>();
+        Drawable Drew = new BitmapDrawable();
+        Drew.createFromPath("res/drawable/baldhill.png");
+        imageList.add(Drew);
+        Drew.createFromPath("res/drawable/cathedral.png");
+        imageList.add(Drew);
+        Drew.createFromPath("res/drawable/lake.png");
+        imageList.add(Drew);
+
+
+        GameModel newModel = new GameModel(8,imageList);
+        Log.d("MODEL" , newModel.toString());
+
     }
 
     @Override
