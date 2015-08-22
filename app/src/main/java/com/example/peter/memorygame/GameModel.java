@@ -2,6 +2,8 @@ package com.example.peter.memorygame;
 
 
 import android.graphics.drawable.Drawable;
+import android.os.Handler;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -35,6 +37,14 @@ public class GameModel {
             this.tileImage = tileImage;
         }
 
+        public int getIdentifier() {
+            return identifier;
+        }
+
+        public Drawable getTileImage() {
+            return tileImage;
+        }
+
         @Override
         public String toString(){
             String NewString = new String();
@@ -65,13 +75,14 @@ public class GameModel {
     //7) A variable to keep track of the games score
     int Score;
 
+    public ArrayList<Drawable> ImageList;
 
 
 
     GameModel(int tiles, ArrayList<Drawable> images){
 
         TileList = new ArrayList<TileData>();
-
+        ImageList = images;
         reset(tiles, images);
     }
 
@@ -137,20 +148,21 @@ public class GameModel {
 
         SecondLastTapped = LastTapped;
         LastTapped = index;
+        Log.d("PTI", "NewCard: " + index + "\tOldCard:" + SecondLastTapped);
     }
 
-
-    public void gameDidComplete(GameModel gm){
-
+    public int getLastTapped(){
+        return LastTapped;
     }
-    public void didMatchTile(GameModel gm, int tileIndex, int previousTileIndex){
-
+    public int getSecondLastTapped(){
+        return SecondLastTapped;
     }
-    public void didFailToMatchTile(GameModel gm, int tileIndex, int previousTileIndex){
 
-    }
-    public void scoreDidUpdate(GameModel gm, int newScore){
-
+    public interface GameModelFunctions{
+        public void gameDidComplete(GameModel gm);
+        public void didMatchTile(GameModel gm, int tileIndex, int previousTileIndex);
+        public void didFailToMatchTile(GameModel gm, int tileIndex, int previousTileIndex);
+        public void scoreDidUpdate(GameModel gm, int newScore);
     }
 
 }
