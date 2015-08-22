@@ -20,7 +20,7 @@ public class GameModel {
     class file called TileData. This structure will represent the state for one single tile. On iOS this must be a
     Struct, on Android this must be a class with public members.
     This structure will have 2 properties: An Image (defined as a Drawable on Android) and an integer image
-    identifier. The purpose of the image identifier is to help you identify identical images – TileData instances
+    identifier. The purpose of the image identifier is to help you identify identical images TileData instances
     with the same image should also have the same image identifier (this will be explained in part 1d)
      */
     public class TileData extends Object {
@@ -50,10 +50,10 @@ public class GameModel {
     //2) An integer representing the index of the second last tile tapped (integer)
     int SecondLastTapped;
 
-    //3) An array of TileData structures (representing our initial game state) (use ArrayList<…> on Android)
+    //3) An array of TileData structures (representing our initial game state) (use ArrayList on Android)
     ArrayList<TileData> TileList;
 
-    //4) A flag indicating whether it’s the first or second turn (Boolean)
+    //4) A flag indicating whether its the first or second turn (Boolean)
     boolean FirstTurn;
 
     //5) A counter for the number of matched tiles (so we can determine when the game has completed)
@@ -62,7 +62,7 @@ public class GameModel {
     //6) A delegate (iOS) / listener reference (Android)
     View.OnTouchListener ListenerRef;
 
-    //7) A variable to keep track of the game’s score
+    //7) A variable to keep track of the games score
     int Score;
 
 
